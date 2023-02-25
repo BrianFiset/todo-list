@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+}
+.container {
+    display: grid;
+    grid-template-rows: 1fr 13fr;
+    grid-template-columns: 1fr 9fr;
+    height: 100%;
+}
+
+/* Header */
+
+.header {
+    grid-column: 1 / 3;
+    background-color: orange;
+}
+
+.main {
+    height: 100%;
+}
+
+/* sidebar */
+
+.sidebar {
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+    justify-items: center;
+    grid-row: 2 / 3;
+    background-color: lightgrey;
+}
+
+.top-sidebar > *:hover {
+    cursor: pointer;
+    background-color: grey;
+    border-radius: 0.2rem;
+}
+
+
+.top-sidebar {
+    display: grid;
+    margin-top: 2rem;
+}
+.top-sidebar .text {
+    font-size: 1.3rem;
+}
+
+.top-sidebar img {
+    height: 1.5rem;
+    width: 1.5erem;
+}
+
+.top-sidebar > * {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;
+    margin: 0.25rem 0.5rem;
+    padding: 0 1rem 0 0;
+}
+
+/* main content */
+
+.main {
+    display: grid;
+    grid-template-rows: auto 1fr;   
+    margin: 0 20%; 
+    gap: 2rem;
+}
+
+.main > .title {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.btn {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    place-items: center;
+}
+
+.btn:hover {
+    background-color: grey;
+    border-radius: 0.5rem;
+}
+
+.btn > img {
+    width: 2rem;
+}
