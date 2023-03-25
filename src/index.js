@@ -1,34 +1,39 @@
-import * as opentab from "./modules/inbox";
+import * as opentab from './modules/inbox';
+import * as todoItems from './modules/todo-items';
 
+todoItems.localProjects()
+todoItems.localTask();
 
 function cleanMain() {
-    const main = document.getElementsByClassName('main')[0];
-    while(main.firstChild) {
-        main.removeChild(main.firstChild);
-    }
+  const main = document.querySelector('.main');
+  while (main.firstChild) {
+    main.removeChild(main.firstChild);
+  }
 }
 
-
-(function (){
-    const inbox = document.getElementsByClassName('inbox')[0];
-    const today = document.getElementsByClassName('today')[0];
-    const upcoming = document.getElementsByClassName('upcoming')[0];
-
-    inbox.addEventListener('click', () => {
-        cleanMain();
-        opentab.openInbox();
+export function loadProjectPage(){
+  const projects = document.querySelectorAll('.project-item')
+  projects.forEach(function(item, index) {
+    item.addEventListener('click', function(){
+      cleanMain();
+      opentab.openPage(todoItems.projects[index]);
     })
+  })
+}
 
-    today.addEventListener('click', () => {
-        cleanMain();
-        opentab.openToday();
-    })
+function loadPage(pageName) {
+  cleanMain();
+  opentab.openPage(pageName);
+  opentab.sideBarOn(pageName)
+}
 
-
-    upcoming.addEventListener('click', () => {
-        cleanMain();
-        opentab.openUpcoming();
-    })
-    
+(() => {
+  const inboxTab = document.querySelector('.inbox');
+  const todayTab = document.querySelector('.today');
+  const upcomingTab = document.querySelector('.upcoming');
+  inboxTab.addEventListener('click', () => {loadPage('inbox')})
+  todayTab.addEventListener('click', () => {loadPage('today')});
+  upcomingTab.addEventListener('click', () => {loadPage('upcoming')});
+  loadProjectPage()
 })();
 
